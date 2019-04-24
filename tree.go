@@ -16,14 +16,14 @@ import (
 // Errors list
 var (
 	ErrInvalidItem        = errors.New("[iprangetree] invalid IP range item")
-	ErrItemRaplaced       = errors.New("[iprangetree] item was replaced")
+	ErrItemReplaced       = errors.New("[iprangetree] item was replaced")
 	ErrInvalidRangeFormat = errors.New("[iprangetree] invalid range format")
 	ErrInvalidRangeValues = errors.New("[iprangetree] start IP is less then end IP")
 )
 
 // IPTree base
 type IPTree struct {
-	mixed bool // If in IPv6 could conatains ranges with IPv4
+	mixed bool // If in IPv6 could contains ranges with IPv4
 	ipV4  *btree.BTree
 	ipV6  *btree.BTree
 }
@@ -62,7 +62,7 @@ func (t *IPTree) AddRangeByString(ipRange string, val interface{}) (err error) {
 	return
 }
 
-// AddRange IPs vith value
+// AddRange IPs with value
 func (t *IPTree) AddRange(ip1, ip2 net.IP, val interface{}) (err error) {
 	var (
 		startIP = ip2fix(ip1)
@@ -101,7 +101,7 @@ func (t *IPTree) AddRange(ip1, ip2 net.IP, val interface{}) (err error) {
 		})
 	}
 	if old != nil {
-		err = ErrItemRaplaced
+		err = ErrItemReplaced
 	}
 	return
 }
