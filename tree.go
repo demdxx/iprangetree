@@ -138,10 +138,6 @@ func (t *IPTree) Lookup(ip net.IP) (response IPItemAccessor) {
 
 	if response == nil && (!ipFix.IsIPv4() || t.mixed) {
 		t.ipV6.AscendGreaterOrEqual(&ipFix, func(item btree.Item) bool {
-			if response != nil {
-				return false
-			}
-
 			it := item.(*IPItemFix)
 			switch ipFix.Compare(&it.StartIP) {
 			case 1:
