@@ -119,10 +119,6 @@ func (t *IPTree) Lookup(ip net.IP) (response IPItemAccessor) {
 	if ipFix.IsIPv4() {
 		ipv4 := ipFix.IPv4()
 		t.ipV4.AscendGreaterOrEqual(ipv4, func(item btree.Item) bool {
-			if response != nil {
-				return false
-			}
-
 			it := item.(*IPItemV4)
 			switch ipv4.Compare(it.StartIP) {
 			case 1:
