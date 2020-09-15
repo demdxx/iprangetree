@@ -10,7 +10,6 @@ import (
 )
 
 // We awaiting IPv4 as size 4 and IPv6 as size 16
-//go:notinheap
 func compare(ip1, ip2 net.IP) int {
 	if len(ip1) > len(ip2) {
 		return 1
@@ -28,7 +27,6 @@ func compare(ip1, ip2 net.IP) int {
 	return 0
 }
 
-//go:notinheap
 func lastIP(ip net.IP, mask net.IPMask) net.IP {
 	var (
 		n   = len(mask)

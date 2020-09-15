@@ -49,7 +49,6 @@ func (ip ipFix) IsEmpty() bool {
 	return ip[net.IPv6len] == 0
 }
 
-//go:notinheap
 func (ip *ipFix) Compare(ip2 *ipFix) (result int) {
 	i := 0
 	if v1, v2 := ip.IsIPv4(), ip2.IsIPv4(); !v1 && v2 {
@@ -85,7 +84,6 @@ func (ip ipFix) IPv4() ipV4 {
 }
 
 // Less camparing for btree
-//go:notinheap
 func (ip *ipFix) Less(then btree.Item) bool {
 	switch v := then.(type) {
 	case *IPItemFix:

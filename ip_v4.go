@@ -41,7 +41,6 @@ func (ip ipV4) IP() net.IP {
 }
 
 // Less camparing for btree
-//go:notinheap
 func (ip ipV4) Less(then btree.Item) bool {
 	switch v := then.(type) {
 	case *IPItemFix:

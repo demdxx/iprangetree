@@ -112,7 +112,6 @@ func (t *IPTree) LookupByString(ip string) IPItemAccessor {
 }
 
 // Lookup to search the IP value in the IP tree
-//go:notinheap
 func (t *IPTree) Lookup(ip net.IP) (response IPItemAccessor) {
 	ipFix := ip2fix(ip)
 
